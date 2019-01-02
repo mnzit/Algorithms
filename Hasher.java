@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr;
+package hackerrank;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,15 +14,7 @@ import java.util.Map;
  */
 public class Hasher {
 
-    public long power(int i, int j) {
-        int pow = 1;
-        for (int k = 0; k < j; k++) {
-            pow = pow * i;
-        }
-        return pow;
-    }
-
-    public long hash(String value) {
+    public static long hash(String value) {
         Map<Character, Integer> map = new HashMap<>();
         int i = 1;
         for (char ch = 'a'; ch <= 'z'; ch++) {
@@ -31,7 +23,7 @@ public class Hasher {
         long result = 0;
         int j = 0;
         for (int m = value.length() - 1; m >= 0; m--) {
-            result += (map.get(value.charAt(m)) * power(10, j++));
+            result += (map.get(value.charAt(m)) * Power.getPower(10, j++));
         }
         return result;
     }
