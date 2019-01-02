@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hr;
+package hackerrank;
 
-import hackerrank.Hasher;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  *
@@ -15,18 +19,13 @@ import hackerrank.Hasher;
  */
 public class StringSearch {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Hasher hasher = new Hasher();
-        String input = "abccaccabbbacc";
-        String search = "acc";
-        long searchHashValue = hasher.hash(search.toCharArray());
+        String input = "WhenKateChopin'snovelTheAwakeningwaspublishedin1899,criticscondemnedthebookasimmoral.Onetypicalcritic,writingintheProvidenceJournal,fearedthatthenovelmight\"fallintothehandsofyouth,leadingthemtodwellonthingsthatonlymaturedpersonscanunderstand,andpromotingunholyimaginationsanduncleandesires\"(150).AreviewerintheSt.LouisPost-Dispatchwrotethat\"thereismuchthatisveryimproperinit,nottosaypositivelyunseemly.";
+        String search = "typical";
+        long searchHashValue = hasher.hash(search);
         for (int k = 0; k < input.length() - search.length() + 1; k++) {
-            char[] send = new char[search.length()];
-            int i = 0;
-            for (int l = 0; l < search.length(); l++) {
-                send[l] = input.charAt(k + i);
-                i++;
-            }
+            String send = input.substring(k, (k + search.length()));
             long receiveHashValue = hasher.hash(send);
             if (searchHashValue == receiveHashValue) {
                 System.out.println("Found from index: " + k);

@@ -5,28 +5,22 @@
  */
 package hackerrank;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  *
  * @author Mnzit
  */
 public class Hasher {
 
-    public long hash(char[] value) {
-        Map<Character, Integer> map = new HashMap<>();
-        int i = 1;
-        for (char ch = 'a'; ch <= 'z'; ch++) {
-            map.put(ch, i++);
-        }
+    public int toAscii(char letter) {
+        return (int) letter;
+    }
+
+    public long hash(String value) {
         long result = 0;
         int j = 0;
-        for (int m = value.length - 1; m >= 0; m--) {
-            result += (map.get(value[m]) * Power.getPower(10, j));
-            j++;
+        for (int m = value.length() - 1; m >= 0; m--) {
+            result += (toAscii(value.charAt(m)) * Power.getPower(10, j++));
         }
-        j = 0;
         return result;
     }
 }
