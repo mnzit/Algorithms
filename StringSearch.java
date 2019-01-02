@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hackerrank;
+package hr;
+
+import hackerrank.Hasher;
 
 /**
  *
@@ -14,11 +16,18 @@ package hackerrank;
 public class StringSearch {
 
     public static void main(String[] args) {
-        String input = "asdi";
-        String search = "sdi";
-        long searchHashValue = Hasher.hash("sdi");
+        Hasher hasher = new Hasher();
+        String input = "abccaccabbbacc";
+        String search = "acc";
+        long searchHashValue = hasher.hash(search.toCharArray());
         for (int k = 0; k < input.length() - search.length() + 1; k++) {
-            long receiveHashValue = Hasher.hash(input.substring(k, k + search.length()));
+            char[] send = new char[search.length()];
+            int i = 0;
+            for (int l = 0; l < search.length(); l++) {
+                send[l] = input.charAt(k + i);
+                i++;
+            }
+            long receiveHashValue = hasher.hash(send);
             if (searchHashValue == receiveHashValue) {
                 System.out.println("Found from index: " + k);
             }
