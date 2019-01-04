@@ -14,10 +14,11 @@ package hackerrank;
 public class NaiveSearch {
 
     public static void searchSubString(String search, String input) {
+        String result = "";
         for (int i = 0; i < input.length() - search.length() + 1; i++) {
-            String subs = input.substring(i, i + search.length());
-            if (subs.equals(search)) {
-                System.out.println("Found (" + search + ") in (" + input + ") from index (" + i + " to " + (i + search.length() - 1) + ")");
+            result = input.substring(i, i + search.length());
+            if (result.equals(search)) {
+                System.out.println("Found in index: " + i);
             }
         }
     }
@@ -26,14 +27,11 @@ public class NaiveSearch {
         for (int i = 0; i < input.length() - search.length() + 1; i++) {
             int k = 0;
             int count = 0;
-
             for (int j = 0; j < search.length(); j++) {
                 if (search.charAt(j) == input.charAt(i + (k++))) {
                     count++;
                 }
-                if (count == search.length()) {
-                    System.out.println("Found (" + search + ") in (" + input + ") from index (" + i + " to " + (i + k - 1) + ")");
-                }
+                System.out.print(count == search.length() ? "Found in index: " + i + "\n" : "");
             }
             count = 0;
         }
@@ -41,6 +39,6 @@ public class NaiveSearch {
 
     public static void main(String[] args) {
         searchSubString("aac", "aaaaaaaac");
-        searchCharByChar("aac", "aaacaaaaa");
+        searchCharByChar("aac", "aaaaaaaac");
     }
 }
