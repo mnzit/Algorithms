@@ -13,7 +13,7 @@ package hackerrank;
  */
 public class NaiveSearch {
 
-    public static void search(String search, String input) {
+    public static void searchSubString(String search, String input) {
         for (int i = 0; i < input.length() - search.length() + 1; i++) {
             String subs = input.substring(i, i + search.length());
             if (subs.equals(search)) {
@@ -22,7 +22,25 @@ public class NaiveSearch {
         }
     }
 
+    public static void searchCharByChar(String search, String input) {
+        for (int i = 0; i < input.length() - search.length() + 1; i++) {
+            int k = 0;
+            int count = 0;
+
+            for (int j = 0; j < search.length(); j++) {
+                if (search.charAt(j) == input.charAt(i + (k++))) {
+                    count++;
+                }
+                if (count == search.length()) {
+                    System.out.println("Found (" + search + ") in (" + input + ") from index (" + i + " to " + (i + k - 1) + ")");
+                }
+            }
+            count = 0;
+        }
+    }
+
     public static void main(String[] args) {
-        search("abcabc", "abaabcaacabcabaabcabcaaacacabc");
+        searchSubString("aac", "aaaaaaaac");
+        searchCharByChar("aac", "aaacaaaaa");
     }
 }
