@@ -5,6 +5,8 @@
  */
 package hackerrank;
 
+import java.io.IOException;
+
 /**
  *
  * @author Mnzit
@@ -19,26 +21,32 @@ public class NaiveSearch {
             result = input.substring(i, i + search.length());
             if (result.equals(search)) {
                 System.out.println("Found in index: " + i);
+                break;
             }
         }
     }
 
     public static void searchCharByChar(String search, String input) {
-        for (int i = 0; i < input.length() - search.length() + 1; i++) {
+        int searchLength = search.length();
+        int inputLength = input.length();
+        for (int i = 0; i < inputLength - searchLength + 1; i++) {
             int k = 0;
             int count = 0;
-            for (int j = 0; j < search.length(); j++) {
+            for (int j = 0; j < searchLength; j++) {
                 if (search.charAt(j) == input.charAt(i + (k++))) {
                     count++;
                 }
-                System.out.print(count == search.length() ? "Found in index: " + i + "\n" : "");
+                if (count == searchLength) {
+                    System.out.println("Found in index: " + i);
+                }
             }
             count = 0;
         }
     }
 
-    public static void main(String[] args) {
-        searchSubString("aac", "aaaaaaaac");
-        searchCharByChar("aac", "aaaaaaaac");
+    public static void main(String[] args) throws IOException {
+//        String path = new String(Files.readAllBytes(Paths.get("d:/note.txt")), "UTF-8");
+//        searchSubString("manjit", path);
+        searchCharByChar("manjit", "rameshmanjit");
     }
 }
