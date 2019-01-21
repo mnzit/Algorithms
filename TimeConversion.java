@@ -38,13 +38,14 @@ public class TimeConversion {
             a = i < 12 ? "AM" : "PM";
             if (hour.equalsIgnoreCase(String.valueOf(String.format("%02d", k))) && b.equalsIgnoreCase(a)) {
                 s = s.replaceFirst(hour, String.format("%02d", i));
+                s = "AM".equals(b) ? s.replace("AM", "") : s.replace("PM", "");
                 break;
             }
         }
-        return s.replace("PM", "").replace("AM", "");
+        return s;
     }
 
     public static void main(String[] args) {
-        System.out.println(timeConversion("12:18:12AM"));
+        System.out.println(timeConversion2("12:18:12PM"));
     }
 }
