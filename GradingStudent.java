@@ -12,10 +12,10 @@ package hackerrank;
 public class GradingStudent {
 
     static int[] gradingStudents(int[] grades) {
-        int count = 0;
+        int count = 0, incre;
         for (int i = 0; i < grades.length; i++) {
-            int incre = grades[i];
-            if(!(grades[i] < 38)){
+            incre = grades[i];
+            if (!(grades[i] < 38)) {
                 while (incre % 5 != 0) {
                     incre++;
                 }
@@ -23,7 +23,7 @@ public class GradingStudent {
                     grades[i] = incre;
                 }
             }
-            
+
         }
 
         return grades;

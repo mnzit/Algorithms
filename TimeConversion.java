@@ -21,13 +21,30 @@ public class TimeConversion {
                 }
                 j++;
             }
-        }else{
-              s = s.replace("AM", "").replaceFirst("12", "00");
+        } else {
+            s = s.replace("AM", "").replaceFirst("12", "00");
         }
         return s;
+
+    }
+
+    static String timeConversion2(String s) {
+        int k = 0;
+        String a = "";
+        String hour = s.split(":")[0];
+        String b = s.substring(s.length() - 2, s.length());;
+        for (int i = 0; i < 24; i++) {
+            k = i == 0 || k == 11 ? 12 : k != 12 ? k + 1 : 1;
+            a = i < 12 ? "AM" : "PM";
+            if (hour.equalsIgnoreCase(String.valueOf(String.format("%02d", k))) && b.equalsIgnoreCase(a)) {
+                s = s.replaceFirst(hour, String.format("%02d", i));
+                break;
+            }
+        }
+        return s.replace("PM", "").replace("AM", "");
     }
 
     public static void main(String[] args) {
-        System.out.println(timeConversion("12:12:12AM"));
+        System.out.println(timeConversion("12:18:12AM"));
     }
 }
