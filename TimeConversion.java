@@ -46,6 +46,6 @@ public class TimeConversion {
     }
 
     public static void main(String[] args) {
-        System.out.println(timeConversion2("12:18:12PM"));
+        System.out.println(timeConversion2("07:18:12PM"));
     }
 }
