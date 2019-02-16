@@ -36,7 +36,7 @@ public class FindGoogle {
         String testSub = "";
         int count2 = 0;
         for (char c : string.toCharArray()) {
-            if (Character.isSpaceChar(c)) {
+            if (c == ' ') {
                 count2++;
                 break;
             }
