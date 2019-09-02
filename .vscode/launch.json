@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Kangaroo",
+            "request": "launch",
+            "mainClass": "hackerrank.Kangaroo"
+        }
+    ]
+}
